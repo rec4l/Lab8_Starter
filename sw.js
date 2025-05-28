@@ -41,7 +41,7 @@ self.addEventListener('fetch', function (event) {
   /*******************************/
   // B7. TODO - Respond to the event by opening the cache using the name we gave
   //            above (CACHE_NAME)
-  return (async () => {
+  event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
     const cachedResponse = await cache.match(event.request);
     
@@ -60,5 +60,5 @@ self.addEventListener('fetch', function (event) {
       console.error('Fetch failed:', error);
       throw error;
     }
-  })();
+  })());
 });
